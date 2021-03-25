@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>HTML Table</title>
+   </head>
+	
+   <body>
+      <table border = "1" width = "400" height = "150">
+      <thead>List of Candidates</thead>
+      <tbody>
+         <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>ACTION</th>
+         </tr>
+         {% for d in data %}
+         <tr>
+            <td>{{d.name}}</td>
+            <td>{{d.age}}</td>
+            <td>{{d.email}}</td>
+            <td><form method="POST" action="{% url 'deleteobject' dataid=d.id %}">
+               {% csrf_token %}
+               <button type="submit">DELETE</button>
+            </form>
+            
+                <button type="submit">UPDATE</button></td>
+         </tr>
+         {% endfor %}
+         <!-- <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+         </tr> -->
+    </tbody>
+    </table>
+    </body>
+    </html>
